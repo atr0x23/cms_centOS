@@ -1,0 +1,16 @@
+.pager li .active_link{
+    
+    background: #9c9c9c !important;
+    
+    
+}
+
+/* Thick border for the hr tag*/
+hr.new4 {
+  border: 1px solid lightblue;
+}
+
+/* Dotted border for the hr tag  */
+hr.new3 {
+  border-top: 2px dotted lightblue;
+}
