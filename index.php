@@ -42,6 +42,11 @@
                 $find_count = mysqli_query($connection, $select_query_count);
                 $count = mysqli_num_rows($find_count);
                 
+                if($count < 1){
+
+                    echo "there are no published posts!";
+                } else{
+
                 $count = ceil($count/$per_page);
                 
                 
@@ -80,7 +85,7 @@
 
                 <hr class="new3">
 
-          <?php } ?>
+          <?php } }  ?>
 
             </div>
 
