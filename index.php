@@ -44,7 +44,7 @@
                 
                 if($count < 1){
 
-                    echo "there are no published posts!";
+                    echo "<h2 class='text-center'>Sorry, there are no published posts!</h2>";
                 } else{
 
                 $count = ceil($count/$per_page);
