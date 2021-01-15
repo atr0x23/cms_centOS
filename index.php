@@ -3,7 +3,7 @@
 
     <!-- Navigation -->
     
-<?php  include "includes/navigation.php"; ?>    
+<?php  include "includes/navigation.php";?>    
 
     <!-- Page Content -->
     <div class="container">
@@ -23,7 +23,8 @@
                 <?php
                 
                 $per_page = 3; //how many posts appear per page
-                
+                $count = 0;
+
                 if(isset($_GET['page'])){
                     
                 $page = escape($_GET['page']);    
@@ -37,26 +38,40 @@
                     $page_1 = ($page * $per_page) - $per_page;
                 }
                 
-                
-                $select_query_count = "SELECT * FROM posts WHERE post_status = 'published'" ; 
-                $find_count = mysqli_query($connection, $select_query_count);
-                $count = mysqli_num_rows($find_count);
-                
-                if($count < 1){
+                //check if the user is admin or another.
+                if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'administrator'){
 
-                    echo "<h2 class='text-center'>Sorry, there are no published posts!</h2>";
+                    $query = "SELECT * FROM posts";
+
+                    } else{
+
+                    $query = "SELECT * FROM posts WHERE post_status = 'published'" ;
+        
+                        }
+
+                //query to select all the posts and after to check the base if there are or is empty. 
+                $count_query = mysqli_query($connection, $query);
+                $count = mysqli_num_rows($count_query);
+                 //check if there are posts
+                 if($count < 1){
+
+                     echo "<h2 class='text-center'>Sorry, there are no published posts!</h2>";
                 } else{
 
-                $count = ceil($count/$per_page);
-                
-                
-                
-                
-                 $query = "SELECT * FROM posts WHERE post_status = 'published' LIMIT $page_1, $per_page" ; 
+                    //check if the user is admin, to echo all the posts and not only the published ones.
+                if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'administrator'){
+
+                    $query = "SELECT * FROM posts LIMIT $page_1, $per_page";
+
+                    } else{
+
+                    $query = "SELECT * FROM posts WHERE post_status = 'published' LIMIT $page_1, $per_page" ;
+
+                        }
                  $select_published_from_posts_query = mysqli_query($connection, $query);
-                    
+
                     while($row = mysqli_fetch_assoc($select_published_from_posts_query)){
-                        
+
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
                         $post_user = $row['post_user'];
@@ -65,11 +80,8 @@
                         $post_content = substr($row['post_content'],0,200);
                         $post_status = $row['post_status'];
                         
-                    //if($post_status == 'published'){
-                        
                     ?>                                   
                         
-                     
                 <h2><?php echo $post_title ?></h2>
                 <p class="lead">
                     by <a href="user_posts.php?user=<?php echo $post_user; ?>&p_id=<?php echo $post_id; ?>"><?php echo $post_user ?></a>
@@ -85,7 +97,7 @@
 
                 <hr class="new3">
 
-          <?php } }  ?>
+          <?php }  } ?>
 
             </div>
 
@@ -102,7 +114,7 @@
         <ul class="pager">
 
     <?php 
-            
+         $count = ceil($count/$per_page);   
         for($i=1; $i<=$count; $i++){
             
             if($i == $page){

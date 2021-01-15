@@ -14,8 +14,8 @@
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    Page Heading
-                    <small>Secondary Text</small>
+                    Page with the posts
+                    <!-- <small>Secondary Text</small> -->
                 </h1>
 
                 <!-- First Blog Post -->
@@ -31,9 +31,25 @@
     $views_query = mysqli_query($connection, $query);
             confirmQuery($views_query);            
     // END post views counter            
-                
-    $query = "SELECT * FROM posts WHERE post_id = $the_post_id" ; 
+    
+    
+    //check if the user is admin, to echo all the posts and not only the published ones.
+    if(isset($_SESSION['user_role']) && $_SESSION['user_role'] == 'administrator'){
+
+        $query = "SELECT * FROM posts WHERE post_id = $the_post_id";
+
+    } else{
+
+        $query = "SELECT * FROM posts WHERE post_id = $the_post_id AND post_status = 'published'" ;
+    }
          $select_all_from_posts_query = mysqli_query($connection, $query);
+
+         if(mysqli_num_rows($select_all_from_posts_query) < 1) {
+
+            echo "<h2 class='text-center'> There are no posts available </h2>";
+
+         } else {
+          
 
         while($row = mysqli_fetch_assoc($select_all_from_posts_query)){
 
@@ -60,7 +76,7 @@
 
                 <hr>
 
-          <?php } }else{ header("Location: index.php");} ?>
+          <?php }  ?>
             
             
             
@@ -172,7 +188,7 @@
                     </div>
                 </div>
                 
-        <?php  } ?>        
+        <?php } } }else{ header("Location: index.php");} ?>        
 
                
                         <!-- Nested Comment --
