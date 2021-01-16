@@ -106,7 +106,9 @@
             $create_comment_query = mysqli_query($connection,$query);
             
            confirmQuery($create_comment_query);
-                
+
+            //notify user that his comment has been entered.
+           echo "<script> alert('thank you psofo, wait for admin approval') </script>";
             
             // increasing the post_comment_counter    
 
