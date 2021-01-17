@@ -14,3 +14,10 @@ hr.new4 {
 hr.new3 {
   border-top: 2px dotted lightblue;
 }
+
+.comment_sec-title {
+  padding-bottom: 9px;
+  margin: 40px 0 20px;
+  border-bottom: 1px solid rgb(3, 96, 158);
+  text-align: center;
+}

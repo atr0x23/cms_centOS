@@ -78,6 +78,39 @@
 
           <?php }  ?>
             
+             <!-- title on the comments section -->
+             <div>
+                <h3 class="comment_sec-title">
+                Comments about the article.
+                </h3>        
+            </div> 
+            <hr>
+            <!-- Comments Form -->
+            <a href="#demo" class="btn btn-info" data-toggle="collapse">Make a comment</a>
+                <div id="demo" class="collapse">
+                    <div class="well">
+                        <!-- <h4>a form title here</h4> -->
+                        <form action="" method="post" role="form">
+                        
+                        <div class="form-group">
+                                <label>username</label>
+                                <input type="text" class="form-control" name="comment_author">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>email</label>
+                                <input type="email" class="form-control" name="comment_email">
+                            </div>
+                        
+                            <div class="form-group">
+                                <label>your comment</label>
+                                <textarea class="form-control" name="comment_content" rows="3"></textarea>
+                            </div>
+                            <input type="submit" class="btn btn-primary" name="create_comment" value="Submit">
+                        </form>
+                    </div>
+                </div>
+                <!-- End of Comments Form -->
             
             
             <!-- Create Comments -->
@@ -142,52 +175,32 @@
         $comment_time = $row['comment_time'];      
                 
         ?>
-
                 <!-- The Comment -->
                 <div class="media">
                     <a class="pull-left" href="#">
                         <img class="media-object" src="http://placehold.it/64x64" alt="">
                     </a>
                     <div class="media-body">
-                        <h4 class="media-heading"><?php echo $comment_author; ?>
-                            <small><?php echo"<strong style='color:green'>$comment_date</strong>"; ?> at <?php echo "<strong style='color:green'>$comment_time </strong>"; ?></small>
-                        </h4>
-                        <?php echo $comment_content; ?>
+                        
+                        <h4 class="media-heading"><?php echo $comment_content; ?></h4>
+                        <small><?php echo $comment_author; ?> <?php echo"<strong style='color:green'>$comment_date</strong>"; ?> at 
+                            <?php echo "<strong style='color:green'>$comment_time </strong>"; ?></small>
+                        
                     </div>
-                </div>    
+                </div>   
         <?php } ?>        
                      
           <!-- END of Show Comments --> 
 
-
-
-                <!-- Comments Form -->
-                <div class="well">
-                    <h4>Leave a Comment:</h4>
-                    <form action="" method="post" role="form">
-                       
-                       <div class="form-group">
-                            <label>username</label>
-                            <input type="text" class="form-control" name="comment_author">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>email</label>
-                            <input type="email" class="form-control" name="comment_email">
-                        </div>
-                       
-                        <div class="form-group">
-                            <label>your comment</label>
-                            <textarea class="form-control" name="comment_content" rows="3"></textarea>
-                        </div>
-                        <input type="submit" class="btn btn-primary" name="create_comment" value="Submit">
-                    </form>
-                </div>
+                
 
                 <hr>
 
-                <!-- Posted Comments -->
                 
+                
+  
+
+  
                      
         
                 
