@@ -12,6 +12,15 @@
 
             <!-- Blog Entries Column -->
             <div class="col-md-8">
+            <?php 
+                
+                if(isset($_GET['p_id'])){
+                    
+                    $the_post_id = $_GET['p_id'];
+                    $the_post_user = $_GET['user'];
+                    
+                    
+                } ?>
 
                 <h1 class="page-header">
                     <!-- Page Heading -->
@@ -21,17 +30,9 @@
 
                 <!-- First Blog Post -->
                 
-                <?php 
-                
-                if(isset($_GET['p_id'])){
-                    
-                    $the_post_id = $_GET['p_id'];
-                    $the_post_user = $_GET['user'];
-                    
-                    
-                }
                 
                 
+                <?php
                 
                 $query = "SELECT * FROM posts WHERE post_user = '{$the_post_user}'" ; 
                      $select_all_from_posts_query = mysqli_query($connection, $query);
