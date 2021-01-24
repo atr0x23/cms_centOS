@@ -14,7 +14,8 @@
             <div class="col-md-8">
 
                 <h1 class="page-header">
-                    Page Heading
+                    <!-- Page Heading -->
+                    All Posts by <?php echo $the_post_user; ?>
                     <small>Secondary Text</small>
                 </h1>
 
@@ -42,21 +43,24 @@
                         $post_user = $row['post_user'];
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
-                        $post_content = $row['post_content'];
+                        // $post_content = $row['post_content'];
+                        $post_content = substr($row['post_content'],0,200); //take only up to 200 characters. Not all the content!
                     
                     ?>    
                         
                      
                 <h2><?php echo $post_title ?></h2>
                 <p class="lead">
-                    All posts by <?php echo $post_user; ?> 
+                    by <?php echo $post_user; ?> 
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
+                <a href="post.php?p_id=<?php echo $post_id; ?>">
                 <img class="img-responsive" src="images/<?php echo $post_image ;?>" alt="">
+                </a>
                 <hr>
                 <p><?php echo $post_content ?></p>
-            <!--    <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a> -->
+               <a class="btn btn-primary" href="post.php?p_id=<?php echo $post_id; ?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 
