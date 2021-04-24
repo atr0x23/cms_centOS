@@ -51,7 +51,7 @@
                      
                 <h2><?php echo $post_title ?></h2>
                 <p class="lead">
-                    by <?php echo $post_user; ?> 
+                    by <a href="user_posts.php?user=<?php echo $post_user; ?>&p_id=<?php echo $post_id; ?>"><?php echo $post_user; ?></a> 
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
