@@ -38,7 +38,7 @@
                         
                         $post_id = $row['post_id'];
                         $post_title = $row['post_title'];
-                        $post_author = $row['post_author'];
+                        $post_user = $row['post_user'];
                         $post_date = $row['post_date'];
                         $post_image = $row['post_image'];
                         $post_content = substr($row['post_content'],0,100);
@@ -49,7 +49,7 @@
                      
                 <h2><?php echo $post_title ?></h2>
                 <p class="lead">
-                    by <a href="index.php"><?php echo $post_author ?></a>
+                    by <a href="user_posts.php?user=<?php echo $post_user; ?>&p_id=<?php echo $post_id; ?>"><?php echo $post_user; ?></a>
                 </p>
                 <p><span class="glyphicon glyphicon-time"></span> Posted on <?php echo $post_date ?></p>
                 <hr>
