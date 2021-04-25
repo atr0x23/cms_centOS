@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav style="box-shadow: 1px 5px 5px #717171;" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
@@ -27,15 +27,38 @@
                         
                        $cat_title = $row['cat_title'];
                        $cat_id = $row['cat_id'];
-                       echo "<li><a href='category_posts.php?category=$cat_id&cat_title=$cat_title'>{$cat_title}</a></li>";
+
+                       $category_class = ''; // active navigation links  ***start***
+                       $registration_class = '';
+                       $contact_class = '';
+                       
+                       $pageName = basename($_SERVER['PHP_SELF']);
+
+                       $registration = 'registration.php';
+                       $contact = 'contact.php';
+
+                       if(isset($_GET['category']) && $_GET['category'] == $cat_id){
+
+                        $category_class = 'active';
+
+                       } elseif($pageName == $registration){
+
+                        $registration_class = 'active';
+                       } elseif($pageName == $contact){
+
+                        $contact_class = 'active';
+                       } // active navigation links  ***end***
+
+                       echo "<li class='$category_class'><a href='category_posts.php?category=$cat_id&cat_title=$cat_title'>{$cat_title}</a></li>";
+
                     }
                     
                     
                       ?>
                       
         <li><a href="admin">Admin</a></li>        
-        <li><a href="registration.php">Register</a></li>
-        <li><a href="contact.php">Contact</a></li>
+        <li class='<?php echo $registration_class;?>'><a href="registration.php">Register</a></li>
+        <li class='<?php echo $contact_class;?>'><a href="contact.php">Contact</a></li>
        <!-- <li><a href="">Online now:<span class="online_users"></span></a></li> -->
                             
                              
