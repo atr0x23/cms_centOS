@@ -9,9 +9,9 @@
     <div class="container">
 
         <div class="row">
-
+        <div class="col-sm-3"> </div>
             <!-- Blog Entries Column -->
-            <div class="col-md-8">
+            <div class="col-sm-6">
             <?php 
                 
                 if(isset($_GET['category'])){
@@ -70,7 +70,7 @@
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
-            <?php include "includes/sidebar.php" ?>
+            <div class="col-sm-3"> </div>
 
         </div>
         <!-- /.row -->
