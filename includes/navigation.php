@@ -106,7 +106,7 @@
     </nav>
 
     <div id="id01" class="modal">
-        <form class="modal-content animate" action="/action_page.php" method="post">
+        <form class="modal-content animate" action="includes/login.php" method="post">
             <div class="imgcontainer">
             <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="img_avatar2.png" alt="Avatar" class="avatar">
@@ -114,12 +114,12 @@
 
             <div class="modal-container">
             <label for="uname"><b>Username</b></label>
-            <input type="text" class="for_the_inputs" placeholder="Enter Username" name="uname" required>
+            <input type="text" class="for_the_inputs" placeholder="Enter Username" name="username" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" class="for_the_inputs" placeholder="Enter Password" name="psw" required>
+            <input type="password" class="for_the_inputs" placeholder="Enter Password" name="password" required>
                 
-            <button class="login-button" type="submit">Login</button>
+            <button class="login-button" name="login" type="submit">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
