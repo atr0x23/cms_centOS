@@ -88,24 +88,14 @@
             <!-- Comments Form -->
             <a href="#demo" class="btn btn-info" data-toggle="collapse">Make a comment</a>
                 <div id="demo" class="collapse">
-                    <div class="well">
+                    <div class="cf">
                         <!-- <h4>a form title here</h4> -->
                         <form action="" method="post" role="form">
                         
-                        <div class="form-group">
-                                <label>username</label>
-                                <input type="text" class="form-control" name="comment_author">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label>email</label>
-                                <input type="email" class="form-control" name="comment_email">
-                            </div>
-                        
-                            <div class="form-group">
-                                <label>your comment</label>
-                                <textarea class="form-control" name="comment_content" rows="3"></textarea>
-                            </div>
+                            <div><input type="text" placeholder="username" required name="comment_author"></div>
+                            <div><input type="email" placeholder="email" required name="comment_email"></div>
+                            <div><textarea placeholder="your comment..." rows"10" required name="comment_content"></textarea></div>
+
                             <input type="submit" class="btn btn-primary" name="create_comment" value="Submit">
                         </form>
                     </div>
@@ -119,21 +109,20 @@
                 
             if(isset($_POST['create_comment'])){
                 
-                $the_post_id = $_GET['p_id'];
-            
-            $comment_author = $_POST['comment_author'];    
-            $comment_email = $_POST['comment_email'];    
+            $the_post_id = $_GET['p_id'];
+            $comment_author = $_POST['comment_author'];
+            $comment_email = $_POST['comment_email'];       
             $comment_content = $_POST['comment_content'];    
             $comment_date = date("Y/m/d");
             $comment_time = date("G:i:s a"); 
                  
                 
-                if(!empty($comment_author) && !empty($comment_email) && !empty($comment_content)){
+                if(!empty($comment_author) && !empty($comment_content)){
                     
                     
             $query = "INSERT INTO comments (comment_post_id, comment_author, comment_email, comment_content, comment_status, comment_date, comment_time)";
                 
-            $query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}',  '{$comment_content}', 'unapproved', '{$comment_date}', '{$comment_time}')"; 
+            $query .= "VALUES ($the_post_id, '{$comment_author}', '{$comment_email}', '{$comment_content}', 'unapproved', '{$comment_date}', '{$comment_time}')"; 
                 
                 
             $create_comment_query = mysqli_query($connection,$query);
