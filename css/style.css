@@ -196,3 +196,8 @@ span.psw {
   margin-bottom: 15px;
   padding: 10px;
 }
+
+.centerd{
+    margin: auto;
+    width: 55%;
+}
