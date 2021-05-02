@@ -188,3 +188,11 @@ span.psw {
 }
 
 /* end of comment form */
+
+.postboarders{
+  border: 1px solid white;
+  border-radius: 2%;
+  box-shadow: 1px 1px 5px #717171;
+  margin-bottom: 15px;
+  padding: 10px;
+}
