@@ -149,6 +149,11 @@ span.psw {
   }
 }
 
+/* Change login modal width when call it from big screen */
+@media screen and (min-width: 940px){
+  .modal-content {width: 30%;}
+}
+
 /**********************************************
 ************Login modal END********************
 ***********************************************/
