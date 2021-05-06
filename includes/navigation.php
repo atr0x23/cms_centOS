@@ -56,10 +56,15 @@
                     
                       ?>
                       
-        <li><a href="admin">Admin</a></li>
-        <li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>        
+        <li><a href="admin">Admin</a></li>               
         <li class='<?php echo $registration_class;?>'><a href="registration.php">Register</a></li>
         <li class='<?php echo $contact_class;?>'><a href="contact.php">Contact</a></li>
+
+            <?php if(isset($_SESSION['user_role'])):?>
+            <li><a href="includes/logout.php" class="btn btn-link">Logout</a></li>
+            <?php else: ?> 
+        <li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+            <?php endif; ?>
        <!-- <li><a href="">Online now:<span class="online_users"></span></a></li> -->
                             
                              
