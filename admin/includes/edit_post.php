@@ -82,9 +82,13 @@ $query .= "WHERE post_id =" . mysqli_real_escape_string($connection, $_GET['p_id
         <input value="<?php echo $post_title; ?>" type="text" class="form-control" name="title">
     </div>
     
-    <?php
+    <div class="form-group">
+     <label for="category">Post Category</label>
+     <div>
+      <select name="post_category" id="post_category">
+      <?php
        //thanos gia na emfanizei sto dropdown san prwti epilogh thn catigoria pou exei to post.
-       $query_category = "SELECT * FROM categories WHERE cat_id = $post_category_id" ; 
+       $query_category = "SELECT * FROM categories" ; 
                         $select_categories = mysqli_query($connection, $query_category);
 
                         confirmQuery($select_categories);
@@ -92,42 +96,19 @@ $query .= "WHERE post_id =" . mysqli_real_escape_string($connection, $_GET['p_id
                         while($row = mysqli_fetch_assoc($select_categories)){
                             $cat_id = $row['cat_id'];        
                             $cat_title = $row['cat_title']; 
-                        }
-       ?>
-    
-    <div class="form-group">
-     <label for="category">Post Category</label>
-     <div>
-      <select name="post_category" id="post_category">
-         <option value="<?php echo $cat_id; ?>"><?php echo $cat_title; // to vriskei apo to query_category ?></option>
-          
-    <?php 
-          
-          
-                    $query = "SELECT * FROM categories " ; 
-                    $select_categories = mysqli_query($connection, $query);
-                    
-                    confirmQuery($select_categories);
-          
-                    while($row = mysqli_fetch_assoc($select_categories)){
-                    $cat_id = $row['cat_id'];        
-                    $cat_title = $row['cat_title'];  
-          
                         
+
+                    if($cat_id == $post_category_id){
+
+                        echo "<option selected value='{$cat_id}'>{$cat_title}</option>";
+
+                    } else {
+
                         echo "<option value='{$cat_id}'>{$cat_title}</option>";
-                        
-                        
-                        
                     }
-          
-          
-          
-          
-          
-          
-          ?>            
-          
-          
+                }   
+       ?>
+         <!-- <option value="<php echo $cat_id; ?>"><php echo $cat_title;?></option>        -->
       </select>
       </div>
     </div>
@@ -136,7 +117,7 @@ $query .= "WHERE post_id =" . mysqli_real_escape_string($connection, $_GET['p_id
 <!--
     <div class="form-group">
         <label for="title">Post Author</label>
-        <input value="<?php// echo $post_author; ?>" type="text" class="form-control" name="author">
+        <input value="<php echo $post_author; ?>" type="text" class="form-control" name="author">
     </div>
 -->
    <div class="form-group">
