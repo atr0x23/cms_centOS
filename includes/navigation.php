@@ -11,10 +11,10 @@
                 <a class="navbar-brand" href="index.php">CMS Front</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                
                
-               <div class="centerd">
+            <div class="centerd">
                 <ul class="nav navbar-nav">
                     
                       
@@ -56,52 +56,52 @@
                     
                       ?>
                       
-        <li><a href="admin">Admin</a></li>               
-        <li class='<?php echo $registration_class;?>'><a href="registration.php">Register</a></li>
-        <li class='<?php echo $contact_class;?>'><a href="contact.php">Contact</a></li>
+                    <li><a href="admin">Admin</a></li>               
+                    <li class='<?php echo $registration_class;?>'><a href="registration.php">Register</a></li>
+                    <li class='<?php echo $contact_class;?>'><a href="contact.php">Contact</a></li>
 
-            <?php if(isset($_SESSION['user_role'])):?>
-            <li><a href="includes/logout.php" class="btn btn-link">Logout</a></li>
-            <?php else: ?> 
-        <li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
-            <?php endif; ?>
-       <!-- <li><a href="">Online now:<span class="online_users"></span></a></li> -->
+                        <?php if(isset($_SESSION['user_role'])):?>
+                        <li><a href="includes/logout.php" class="btn btn-link">Logout</a></li>
+                        <?php else: ?> 
+                    <li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
+                        <?php endif; ?>
+                        <!-- <li><a href="">Online now:<span class="online_users"></span></a></li> -->
+                                    
+                                    
                             
-                             
-                      
-                       
+                            
+                        
+                        
+                    <?php
+                        
+                        if(isset($_SESSION['user_role'])) {
+                            
+                            if($_SESSION['user_role'] == 'administrator'){
+                            
+                            if(isset($_GET['p_id'])){
+                                
+                                $the_post_id = $_GET['p_id'];
+                                
+                                echo "<li><a href='admin/posts.php?source=edit_post&p_id={$the_post_id}'>Edit Post</a></li>";
+                            }
+                            
+                            }
+                            
+                        }           
+                                    
+                        ?>
                 
                 
-    <?php
-        
-        if(isset($_SESSION['user_role'])) {
-            
-            if($_SESSION['user_role'] == 'administrator'){
-            
-            if(isset($_GET['p_id'])){
-                
-                $the_post_id = $_GET['p_id'];
-                
-                echo "<li><a href='admin/posts.php?source=edit_post&p_id={$the_post_id}'>Edit Post</a></li>";
-            }
-            
-            }
-            
-        }           
-                    
-        ?>
-                
-                
-               <!-- <li>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <a href="#">Contact</a>
-                    </li>-->
+                    <!-- <li>
+                                <a href="#">Services</a>
+                            </li>
+                            <li>
+                                <a href="#">Contact</a>
+                            </li>-->
                 
                 
                 </ul>
-    </div>  
+            </div>  
                 
                 
             </div>
