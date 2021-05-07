@@ -55,13 +55,13 @@
                     
                     
                       ?>
-                      
-                    <li><a href="admin">Admin</a></li>               
+                                    
                     <li class='<?php echo $registration_class;?>'><a href="registration.php">Register</a></li>
                     <li class='<?php echo $contact_class;?>'><a href="contact.php">Contact</a></li>
 
                         <?php if(isset($_SESSION['user_role'])):?>
                         <li><a href="includes/logout.php" class="btn btn-link">Logout</a></li>
+                        <li><a href="admin">Admin</a></li>
                         <?php else: ?> 
                     <li><a onclick="document.getElementById('id01').style.display='block'">Login</a></li>
                         <?php endif; ?>
