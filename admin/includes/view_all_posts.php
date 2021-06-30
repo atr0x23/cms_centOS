@@ -46,11 +46,12 @@ foreach($_POST['checkBoxArray'] as $postValueId ){
         $post_tags = escape($row['post_tags']);        
         $post_content = escape($row['post_content']);                
         $post_date = escape($row['post_date']);
+        $post_views_count = 0;
 
     }
     
-    $query = " INSERT INTO posts( post_user, post_title, post_category_id, post_status, post_image, post_tags, post_content, post_date ) ";    
-    $query .= " VALUES('{$post_user}','{$post_title}','{$post_category_id}','$post_status','{$post_image}','{$post_tags}','{$post_content}',now()) "; 
+    $query = " INSERT INTO posts( post_user, post_title, post_category_id, post_status, post_image, post_tags, post_content, post_views_count, post_date ) ";    
+    $query .= " VALUES('{$post_user}','{$post_title}','{$post_category_id}','$post_status','{$post_image}','{$post_tags}','{$post_content}','{$post_views_count}',now()) "; 
     $the_clone_query = mysqli_query($connection, $query);
         confirmQuery($the_clone_query);
             
